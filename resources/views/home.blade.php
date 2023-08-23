@@ -4,51 +4,58 @@
     <div class="main">
         <!-- Slider -->
         <div class="main-slider position-relative">
-            <div class="swiper SwiperSlide">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img class="img-fluid w-100" src="/temp/images/bg-slide.png" alt="Slide Image">
-                        <div class="slide-container container">
+            @if ($slide->isEmpty())
+                <p>Không có dữ liệu slide.</p>
+            @else
+                <div class="swiper SwiperSlide">
+                    <div class="swiper-wrapper">
+                        @foreach($slide as $item)
+                        <div class="swiper-slide">
+                            <img class="img-fluid w-100" src="{{ asset('storage/images/slides/'. $item->image) }}" alt="Slide Image">
+                            <div class="slide-container container">
                                 <div class="main-slider__content">
-                                    <h1 class="title">Huấn luyện An toàn, vệ sinh lao động </h1>
-                                <p class="desc">
-                                    Các khóa huấn luyện được xây dựng theo chương trình khung và cho các đối tượng được quy định tại Nghị định số 44/2016/NÐ-CP của Chính phủ.
-                                </p>
+                                    <h1 class="title">{{ $item->title }}</h1>
+                                    <p class="desc">
+                                        {{ $item->short_desc }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
+                        @endforeach
+{{--                        <div class="swiper-slide">--}}
+{{--                            <img class="img-fluid w-100" src="/temp/images/bg-slide.png" alt="Slide Image">--}}
+{{--                            <div class="slide-container container">--}}
+{{--                                <div class="main-slider__content">--}}
+{{--                                    <h1 class="title">Huấn luyện An toàn, vệ sinh lao động </h1>--}}
+{{--                                    <p class="desc">--}}
+{{--                                        Các khóa huấn luyện được xây dựng theo chương trình khung và cho các đối tượng được quy định tại Nghị định số 44/2016/NÐ-CP của Chính phủ.--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <img class="img-fluid w-100" src="/temp/images/bg-slide.png" alt="Slide Image">--}}
+{{--                            <div class="slide-container container">--}}
+{{--                                <div class="main-slider__content">--}}
+{{--                                    <h1 class="title">Huấn luyện An toàn, vệ sinh lao động </h1>--}}
+{{--                                    <p class="desc">--}}
+{{--                                        Các khóa huấn luyện được xây dựng theo chương trình khung và cho các đối tượng được quy định tại Nghị định số 44/2016/NÐ-CP của Chính phủ.--}}
+{{--                                    </p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
-                    <div class="swiper-slide">
-                        <img class="img-fluid w-100" src="/temp/images/bg-slide.png" alt="Slide Image">
-                        <div class="slide-container container">
-                                <div class="main-slider__content">
-                                    <h1 class="title">Huấn luyện An toàn, vệ sinh lao động </h1>
-                                <p class="desc">
-                                    Các khóa huấn luyện được xây dựng theo chương trình khung và cho các đối tượng được quy định tại Nghị định số 44/2016/NÐ-CP của Chính phủ.
-                                </p>
-                            </div>
+                    <div class="slider-button">
+                        <div class="swiper-button-next">
+                            <img src="/temp/images/icon/arrow-right.png" alt="">
                         </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <img class="img-fluid w-100" src="/temp/images/bg-slide.png" alt="Slide Image">
-                        <div class="slide-container container">
-                                <div class="main-slider__content">
-                                    <h1 class="title">Huấn luyện An toàn, vệ sinh lao động </h1>
-                                <p class="desc">
-                                    Các khóa huấn luyện được xây dựng theo chương trình khung và cho các đối tượng được quy định tại Nghị định số 44/2016/NÐ-CP của Chính phủ.
-                                </p>
-                            </div>
+                        <div class="swiper-button-prev">
+                            <img src="/temp/images/icon/arrow-left.png" alt="">
                         </div>
                     </div>
                 </div>
-                <div class="slider-button">
-                    <div class="swiper-button-next">
-                        <img src="/temp/images/icon/arrow-right.png" alt="">
-                    </div>
-                    <div class="swiper-button-prev">
-                        <img src="/temp/images/icon/arrow-left.png" alt="">
-                    </div>
-                </div>
-            </div>
+            @endif
+
         </div>
         <!-- Content -->
         <div class="main-content">
