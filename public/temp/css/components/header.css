@@ -1,0 +1,91 @@
+@charset "UTF-8";
+input[type="radio"] {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #111111;
+  border-radius: 50%;
+  transition: all 0.3s ease; }
+  input[type="radio"]:checked {
+    background: #111111; }
+
+label {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 10px; }
+
+.header {
+  align-items: center;
+  background: #0B3E79;
+  padding-left: 125px; }
+  .header-logo {
+    margin-right: 40px; }
+  .header-content {
+    padding-left: 85px; }
+    .header-content__top {
+      color: #ffffff;
+      font-size: 15px;
+      padding: 23px 0;
+      padding-right: 125px;
+      justify-content: space-between; }
+      .header-content__top .left .email {
+        margin-right: 40px; }
+      .header-content__top .right .follow {
+        margin-right: 5px; }
+      .header-content__top .right img {
+        margin-left: 10px; }
+    .header-content__bottom {
+      padding: 20px 0;
+      padding-left: 85px;
+      padding-right: 125px;
+      background: #ffffff;
+      font-size: 16px;
+      align-items: center; }
+      .header-content__bottom::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 7%;
+        height: 100%;
+        background-color: inherit;
+        transform-origin: top left;
+        /* Điểm quay biến đổi skew */
+        transform: skewX(-45deg);
+        /* Xén chéo cạnh bên trái vào bên trong */
+        z-index: 1;
+        /* Đẩy pseudo-element xuống dưới nền */
+        background: #ffffff; }
+      .header-content__bottom .logo {
+        margin-right: 30px; }
+      .header-content__bottom .menu {
+        flex-wrap: wrap; }
+        .header-content__bottom .menu-item {
+          font-weight: 600;
+          color: #001036;
+          margin: 5px 30px 5px 0;
+          transition: .3s all; }
+          .header-content__bottom .menu-item i {
+            font-size: 10px;
+            vertical-align: middle; }
+          .header-content__bottom .menu-item a {
+            color: #001036; }
+          .header-content__bottom .menu-item:hover {
+            cursor: pointer;
+            color: #0B3E79;
+            transition: .3s all; }
+      .header-content__bottom .contact {
+        align-items: center;
+        white-space: nowrap;
+        margin-left: auto; }
+        .header-content__bottom .contact-text {
+          margin-left: 7px; }
+          .header-content__bottom .contact-text .call {
+            color: #213842;
+            margin-bottom: 5px; }
+          .header-content__bottom .contact-text .phone {
+            color: #FC0001;
+            font-size: 19px;
+            font-weight: 700; }
+
+/*# sourceMappingURL=header.css.map */
