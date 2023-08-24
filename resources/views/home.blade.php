@@ -22,28 +22,6 @@
                             </div>
                         </div>
                         @endforeach
-{{--                        <div class="swiper-slide">--}}
-{{--                            <img class="img-fluid w-100" src="/temp/images/bg-slide.png" alt="Slide Image">--}}
-{{--                            <div class="slide-container container">--}}
-{{--                                <div class="main-slider__content">--}}
-{{--                                    <h1 class="title">Huấn luyện An toàn, vệ sinh lao động </h1>--}}
-{{--                                    <p class="desc">--}}
-{{--                                        Các khóa huấn luyện được xây dựng theo chương trình khung và cho các đối tượng được quy định tại Nghị định số 44/2016/NÐ-CP của Chính phủ.--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                        <div class="swiper-slide">--}}
-{{--                            <img class="img-fluid w-100" src="/temp/images/bg-slide.png" alt="Slide Image">--}}
-{{--                            <div class="slide-container container">--}}
-{{--                                <div class="main-slider__content">--}}
-{{--                                    <h1 class="title">Huấn luyện An toàn, vệ sinh lao động </h1>--}}
-{{--                                    <p class="desc">--}}
-{{--                                        Các khóa huấn luyện được xây dựng theo chương trình khung và cho các đối tượng được quy định tại Nghị định số 44/2016/NÐ-CP của Chính phủ.--}}
-{{--                                    </p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                     </div>
                     <div class="slider-button">
                         <div class="swiper-button-next">
@@ -62,100 +40,89 @@
 
             <!--  -->
             <div class=" main-content__mission container">
-                <div class="top d-flex position-relative">
-                    <div class="left flex-column">
-                        <img src="/temp/images/Aboutus.png" class="img-aboutus" alt="">
-                        <h3 class="title">
-                            PHƯƠNG CHÂM
-                        </h3>
-                        <h1 class="quotes">
-                            “AN TOÀN CỦA BẠN LÀ SỨ MỆNH CỦA ASEAN”
-                        </h1>
-                        <div class="desc">
-                            <p>
-                                Sứ mệnh của chúng tôi là đem lại những giải pháp và dịch vụ tốt nhất nhằm đáp ứng những sự kỳ vọng của khách hàng, giúp khách hàng đạt được mục                         tiêu trong chiến lược kinh doanh lâu dài của họ.
-                            </p>
-                            <p>
-                                Chúng tôi đánh giá sự thành công dựa trên sự tín nhiệm của khách hàng và các đối tác liên quan. Sự thành công đó tất yếu phải dựa trên các yếu                          tố về chất lượng cao, dịch vụ hoàn hảo.
-                            </p>
+                @if ($slide->isEmpty())
+                    <p>Không có dữ liệu sứ mệnh.</p>
+                @else
+                    @foreach($mission as $item)
+                    <div class="top d-flex position-relative">
+                        <div class="left flex-column">
+                            <img src="{{ asset('storage/images/mission/logo/'. $item->logo) }}" class="img-aboutus" alt="">
+                            <h3 class="title">
+                                {{$item->subtitle}}
+                            </h3>
+                            <h1 class="quotes">
+                                {{$item->title}}
+                            </h1>
+                            <div class="desc">
+                                {!! $item->desc !!}
+                            </div>
+                            <button class="mission-btn">Xem thêm</button>
                         </div>
-                        <button class="mission-btn">Xem thêm</button>
+                        <div class="right flex-center">
+                            @foreach(json_decode($item->image) as $image)
+                                <img class="img-fluid" width="247" height="247" src="{{ asset('storage/images/mission/' . $image) }}" alt="">
+                            @endforeach
+                        </div>
                     </div>
-                    <div class="right flex-center">
-                        <img class="img-fluid" width="247" height="247" src="/temp/images/Bitmap.png" alt="">
-                        <img class="img-fluid" width="247" height="247" src="/temp/images/Bitmap2.png" alt="">
-                        <img class="img-fluid" width="247" height="247" src="/temp/images/Bitmap3.png" alt="">
-                    </div>
-                </div>
-                <div class="bottom d-flex">
-                    <div class="mission-item text-center">
-                        <img src="temp/images/icon/Object.png" class="icon" alt="">
-                        <h2 class="title">Tầm nhìn</h2>
-                        <p class="desc">
-                            Chúng tôi luôn đặt phát triển bền vững làm cốt lõi trong lĩnh vực kinh doanh của mình. Từng bước trở thành một trong những đơn vị ưu thế trong lĩnh vực an toàn, vệ sinh lao động và đào tạo nghề.
-                        </p>
-                    </div>
-                    <div class="mission-item text-center">
-                        <img src="temp/images/icon/Object.png" class="icon" alt="">
-                        <h2 class="title">Tầm nhìn</h2>
-                        <p class="desc">
-                            Chúng tôi luôn đặt phát triển bền vững làm cốt lõi trong lĩnh vực kinh doanh của mình. Từng bước trở thành một trong những đơn vị ưu thế trong lĩnh vực an toàn, vệ sinh lao động và đào tạo nghề.
-                        </p>
-                    </div>
-                    <div class="mission-item text-center">
-                        <img src="temp/images/icon/Object.png" class="icon" alt="">
-                        <h2 class="title">Tầm nhìn</h2>
-                        <p class="desc">
-                            Chúng tôi luôn đặt phát triển bền vững làm cốt lõi trong lĩnh vực kinh doanh của mình. Từng bước trở thành một trong những đơn vị ưu thế trong lĩnh vực an toàn, vệ sinh lao động và đào tạo nghề.
-                        </p>
+                    @endforeach
+                @endif
+                <div class="bottom swiper slide-mission">
+                    <div class="swiper-wrapper">
+                        @if ($slide->isEmpty())
+                            <p>Không có dữ liệu sứ mệnh.</p>
+                        @else
+                            @foreach ($missionChildren as $missionChild)
+                            <div class="swiper-slide">
+                                <div class="mission-item text-center">
+                                    <img width="78" height="78" src="{{ asset('storage/images/listMissions/' . $missionChild->thumb) }}" class="icon" alt="">
+                                    <h2 class="title">{{ $missionChild->title }}</h2>
+                                    <p class="desc">
+                                        {{ $missionChild->desc }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
 
             <!--  -->
             <div class="main-content__service">
-               <div class="container d-flex  position-relative">
-                   <img src="temp/images/Services.png" alt="" class="service-img position-absolute">
-                   <div class="left w-100">
-                       <h1 class="title">
-                           dịch vụ nổi bật
-                       </h1>
-                   </div>
-                   <div class="right w-100 flex-column">
-                       <p>Sứ mệnh của chúng tôi là đem lại những giải pháp và dịch vụ tốt nhất nhằm đáp ứng những sự kỳ vọng của khách hàng</p>
-                       <span class="bar"></span>
-                   </div>
-               </div>
+                @if ($slide->isEmpty())
+                    <p>Không có dữ liệu dịch vụ.</p>
+                @else
+                    @foreach($service as $item)
+                        <div class="container d-flex  position-relative">
+                            <img src="{{asset('storage/images/services/'. $item->thumb)}}" alt="" class="service-img position-absolute">
+                            <div class="left w-100">
+                                <h1 class="title">
+                                    {{ $item->title }}
+                                </h1>
+                            </div>
+                            <div class="right w-100 flex-column">
+                                <p>{{ $item->desc }}</p>
+                                <span class="bar"></span>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+
                 <div class="list-service">
                    <div class="container d-flex position-relative">
-                       <div class="list-service__item text-center">
-                           <img src="temp/images/icon/flower.png" alt="" class="icon">
-                           <h2 class="title">Dịch vụ huấn luyện</h2>
-                           <p class="desc">
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                           </p>
-                       </div>
-                       <div class="list-service__item text-center">
-                           <img src="temp/images/icon/flower.png" alt="" class="icon">
-                           <h2 class="title">Dịch vụ huấn luyện</h2>
-                           <p class="desc">
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                           </p>
-                       </div>
-                       <div class="list-service__item text-center">
-                           <img src="temp/images/icon/flower.png" alt="" class="icon">
-                           <h2 class="title">Dịch vụ huấn luyện</h2>
-                           <p class="desc">
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                           </p>
-                       </div>
-                       <div class="list-service__item text-center">
-                           <img src="temp/images/icon/flower.png" alt="" class="icon">
-                           <h2 class="title">Dịch vụ huấn luyện</h2>
-                           <p class="desc">
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                           </p>
-                       </div>
+                       @if ($slide->isEmpty())
+                           <p>Không có dữ liệu dịch vụ.</p>
+                       @else
+                           @foreach($serviceChildren as $item)
+                               <div class="list-service__item text-center">
+                                   <img src="{{ asset('storage/images/listServices/' . $item->thumb) }}" alt="" class="icon">
+                                   <h2 class="title">{{$item->title}}</h2>
+                                   <p class="desc">
+                                       {{$item->desc}}
+                                   </p>
+                               </div>
+                           @endforeach
+                       @endif
                    </div>
                 </div>
             </div>

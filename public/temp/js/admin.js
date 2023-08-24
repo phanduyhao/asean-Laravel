@@ -11,8 +11,9 @@ $(document).ready(function() {
 })
 
 // Process Upload Images Slide
-function previewImages(event) {
-    var previewContainer = document.getElementById('image-preview');
+function previewImages(previewContainerId, fileInputId, event) {
+    var previewContainer = document.getElementById(previewContainerId);
+    var fileInput = document.getElementById(fileInputId);
     var files = event.target.files;
     for (var i = 0; i < files.length; i++) {
         var file = files[i];
@@ -26,24 +27,24 @@ function previewImages(event) {
             var deleteButton = document.createElement('button');
             deleteButton.innerHTML = 'X';
             deleteButton.className = 'delete-button';
-            deleteButton.setAttribute('type', 'button'); // Đảm bảo nút là loại button để không gửi form
-            // Thêm sự kiện xóa ảnh khi click vào nút delete-button
+            deleteButton.setAttribute('type', 'button');
             deleteButton.addEventListener('click', function () {
-                var container = this.parentElement; // Phần tử cha của nút delete-button (div.image-container)
-                container.remove(); // Xóa phần tử cha (div.image-container) khỏi previewContainer
-                updateFileInput(); // Cập nhật thuộc tính multiple cho file input
+                var container = this.parentElement;
+                container.remove();
+                updateFileInput(fileInputId);
             });
             imgContainer.appendChild(imgElement);
             imgContainer.appendChild(deleteButton);
             previewContainer.appendChild(imgContainer);
-        }
+        };
         reader.readAsDataURL(file);
     }
-    updateFileInput();
+    updateFileInput(fileInputId);
 }
-function updateFileInput() {
-    var fileInput = document.getElementById('file-input');
-    var previewContainer = document.getElementById('image-preview');
+
+function updateFileInput(fileInputId) {
+    var fileInput = document.getElementById(fileInputId);
+    var previewContainer = document.getElementById(fileInputId.replace('file-input', 'image-preview'));
     var imageContainers = previewContainer.getElementsByClassName('image-container');
 
     if (imageContainers.length > 0) {
@@ -52,6 +53,7 @@ function updateFileInput() {
         fileInput.removeAttribute('multiple');
     }
 }
+
 
 // tạo Alias tự động
 document.addEventListener('DOMContentLoaded', function() {

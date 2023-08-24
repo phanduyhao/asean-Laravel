@@ -785,6 +785,7 @@ input[type="number"]::-webkit-outer-spin-button {
           position: absolute;
           top: 0; }
         .main-content__mission .top .left .title {
+          text-transform: uppercase;
           font-size: 26px;
           color: #4C4C4C;
           line-height: 1.7em;
@@ -824,7 +825,8 @@ input[type="number"]::-webkit-outer-spin-button {
     .main-content__mission .bottom {
       gap: 80px; }
       .main-content__mission .bottom .mission-item .icon {
-        margin-bottom: 15px; }
+        margin-bottom: 15px;
+        object-fit: none; }
       .main-content__mission .bottom .mission-item .title {
         color: #213842;
         margin-bottom: 20px; }

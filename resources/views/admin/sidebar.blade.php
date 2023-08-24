@@ -74,37 +74,38 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{route('missions.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
-                                Quản lý danh mục
+                                Quản lý sứ mệnh
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon fas fa-file"></i>
-                            <p>
-                                Quản lý bài viết
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
-                            <i class="nav-icon fas fa-chart-pie"></i>
-                            <p>
-                                Quản lý địa chỉ
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{route('listMissions.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-copy"></i>
                             <p>
-                                Quản lý banners
+                                Quản lý danh sách sứ mệnh
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('services.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>
+                                Quản lý dịch vụ
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('listServices.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Quản lý danh sách dịch vụ
+                            </p>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a href="" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>

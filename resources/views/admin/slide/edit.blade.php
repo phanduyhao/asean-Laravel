@@ -19,8 +19,8 @@
                     <label for="">Title</label>
                     <input value="{{$slide->title}}" name="title" type="text" class="form-control" id="title" placeholder="Title Slide">
                 </div>
-                <div id="image-gallery">
-                    <input type="file" name="image" id="file-input" multiple onchange="previewImages(event)">
+                <div class="image-gallery">
+                    <input type="file" name="image" class="file-input" multiple onchange="previewImages('image-preview', 'file-input', event)">
                     <div id="image-preview"></div>
                 </div>
                 <div class="form-group mt-2">

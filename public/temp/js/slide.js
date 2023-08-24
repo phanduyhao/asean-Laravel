@@ -25,6 +25,15 @@ var swiper = new Swiper(".slide-review", {
         clickable: true,
     }
 });
+var swiper = new Swiper(".slide-mission", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    }
+});
+
 var swiper = new Swiper(".slide-customer", {
     slidesPerView: 6,
     spaceBetween: 30,

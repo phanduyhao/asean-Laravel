@@ -197,6 +197,7 @@ input[type="number"]::-webkit-outer-spin-button {
                           top: 0;
                       }
                       .title{
+                          text-transform: uppercase;
                           font-size: 26px;
                           color: #4C4C4C;
                           line-height: 1.7em;
@@ -247,6 +248,7 @@ input[type="number"]::-webkit-outer-spin-button {
                 .mission-item{
                     .icon{
                         margin-bottom: 15px;
+                        object-fit: none;
                     }
                     .title{
                         color: #213842;
