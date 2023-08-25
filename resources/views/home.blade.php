@@ -40,7 +40,7 @@
 
             <!--  -->
             <div class=" main-content__mission container">
-                @if ($slide->isEmpty())
+                @if ($mission->isEmpty())
                     <p>Không có dữ liệu sứ mệnh.</p>
                 @else
                     @foreach($mission as $item)
@@ -68,7 +68,7 @@
                 @endif
                 <div class="bottom swiper slide-mission">
                     <div class="swiper-wrapper">
-                        @if ($slide->isEmpty())
+                        @if ($missionChildren->isEmpty())
                             <p>Không có dữ liệu sứ mệnh.</p>
                         @else
                             @foreach ($missionChildren as $missionChild)
@@ -86,31 +86,25 @@
                     </div>
                 </div>
             </div>
-
-            <!--  -->
+                <!--  -->
             <div class="main-content__service">
-                @if ($slide->isEmpty())
-                    <p>Không có dữ liệu dịch vụ.</p>
-                @else
-                    @foreach($service as $item)
-                        <div class="container d-flex  position-relative">
-                            <img src="{{asset('storage/images/services/'. $item->thumb)}}" alt="" class="service-img position-absolute">
-                            <div class="left w-100">
-                                <h1 class="title">
-                                    {{ $item->title }}
-                                </h1>
-                            </div>
-                            <div class="right w-100 flex-column">
-                                <p>{{ $item->desc }}</p>
-                                <span class="bar"></span>
-                            </div>
+                @foreach($service as $item)
+                    <div class="container d-flex  position-relative">
+                        <img src="{{asset('storage/images/sections/'. $item->thumb)}}" alt="" class="service-img position-absolute">
+                        <div class="left w-100">
+                            <h1 class="title">
+                                {{ $item->title }}
+                            </h1>
                         </div>
-                    @endforeach
-                @endif
-
+                        <div class="right w-100 flex-column">
+                            <p>{{ $item->desc }}</p>
+                            <span class="bar"></span>
+                        </div>
+                    </div>
+                @endforeach
                 <div class="list-service">
                    <div class="container d-flex position-relative">
-                       @if ($slide->isEmpty())
+                       @if ($serviceChildren->isEmpty())
                            <p>Không có dữ liệu dịch vụ.</p>
                        @else
                            @foreach($serviceChildren as $item)
@@ -129,104 +123,40 @@
 
             <!--  -->
             <div class="main-content__testimonial container position-relative">
-                <img src="temp/images/Testimonial.png" class="position-absolute testimonial-logo" alt="">
-                <img src="temp/images/icon/quote-icon.png" class="testimonial-logoQuote position-absolute" alt="">
-               <div class="content">
-                   <h1 class="title text-center">
-                       cảm nhận khách hàng
-                   </h1>
+                @foreach($testimo as $item)
+                    <img src="{{asset('storage/images/sections/' . $item->thumb)}}" class="position-absolute testimonial-logo" alt="">
+                    <img src="temp/images/icon/quote-icon.png" class="testimonial-logoQuote position-absolute" alt="">
+                    <div class="content">
+                        <h1 class="title text-center">
+                            {{$item->title}}
+                        </h1>
+                @endforeach
                    <div class="swiper slide-review">
                        <div class="swiper-wrapper">
-                           <div class="swiper-slide">
-                               <div class="testimonial-review">
-                                   <div class="info d-flex">
-                                       <img src="temp/images/icon/avatar.png" alt="" class="avatar">
-                                       <div class="info-detail">
-                                           <h4 class="name">
-                                                Nguyễn Trường Vinh
-                                           </h4>
-                                           <p class="level">
-                                                Kiến trúc sư
+                           @if ($testimoChildren->isEmpty())
+                               <p>Không có dữ liệu sứ mệnh.</p>
+                           @else
+                               @foreach ($testimoChildren as $testimoChild)
+                                   <div class="swiper-slide">
+                                       <div class="testimonial-review">
+                                           <div class="info d-flex">
+                                               <img src="{{asset('storage/images/testimonials/' . $testimoChild->thumb)}}" width="66" alt="" class="avatar">
+                                               <div class="info-detail">
+                                                   <h4 class="name">
+                                                       {{$testimoChild->name}}
+                                                   </h4>
+                                                   <p class="level">
+                                                       {{$testimoChild->position}}
+                                                   </p>
+                                               </div>
+                                           </div>
+                                           <p class="review">
+                                               {{$testimoChild->comment}}
                                            </p>
                                        </div>
                                    </div>
-                                   <p class="review">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                   </p>
-                               </div>
-                           </div>
-                           <div class="swiper-slide">
-                               <div class="testimonial-review">
-                                   <div class="info d-flex">
-                                       <img src="temp/images/icon/avatar.png" alt="" class="avatar">
-                                       <div class="info-detail">
-                                           <h4 class="name">
-                                               Nguyễn Trường Vinh
-                                           </h4>
-                                           <p class="level">
-                                               Kiến trúc sư
-                                           </p>
-                                       </div>
-                                   </div>
-                                   <p class="review">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                   </p>
-                               </div>
-                           </div>
-                           <div class="swiper-slide">
-                               <div class="testimonial-review">
-                                   <div class="info d-flex">
-                                       <img src="temp/images/icon/avatar.png" alt="" class="avatar">
-                                       <div class="info-detail">
-                                           <h4 class="name">
-                                               Nguyễn Trường Vinh
-                                           </h4>
-                                           <p class="level">
-                                               Kiến trúc sư
-                                           </p>
-                                       </div>
-                                   </div>
-                                   <p class="review">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                   </p>
-                               </div>
-                           </div>
-                           <div class="swiper-slide">
-                               <div class="testimonial-review">
-                                   <div class="info d-flex">
-                                       <img src="temp/images/icon/avatar.png" alt="" class="avatar">
-                                       <div class="info-detail">
-                                           <h4 class="name">
-                                               Nguyễn Trường Vinh
-                                           </h4>
-                                           <p class="level">
-                                               Kiến trúc sư
-                                           </p>
-                                       </div>
-                                   </div>
-                                   <p class="review">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                   </p>
-                               </div>
-                           </div>
-                           <div class="swiper-slide">
-                               <div class="testimonial-review">
-                                   <div class="info d-flex">
-                                       <img src="temp/images/icon/avatar.png" alt="" class="avatar">
-                                       <div class="info-detail">
-                                           <h4 class="name">
-                                               Nguyễn Trường Vinh
-                                           </h4>
-                                           <p class="level">
-                                               Kiến trúc sư
-                                           </p>
-                                       </div>
-                                   </div>
-                                   <p class="review">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                   </p>
-                               </div>
-                           </div>
+                               @endforeach
+                           @endif
                        </div>
                        <div class="swiper-pagination"></div>
                    </div>
@@ -236,48 +166,25 @@
             <!--  -->
             <div class="main-content__customer">
                 <div class="container position-relative">
-                    <img src="temp/images/customer.png" class="customer-logo position-absolute" alt="">
-                    <h1 class="title text-center">khách hàng tiêu biểu</h1>
+                    @foreach($customer as $item)
+                        <img src="{{asset('storage/images/sections/' . $item->thumb)}}" class="customer-logo position-absolute" alt="">
+                        <h1 class="title text-center">{{$item->title}}</h1>
+                    @endforeach
+
                     <div class="swiper slide-customer">
                         <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="customer-list__item">
-                                    <img src="temp/images/icon/logo.png" alt="" class="customer-img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="customer-list__item">
-                                    <img src="temp/images/icon/logo1.png" alt="" class="customer-img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="customer-list__item">
-                                    <img src="temp/images/icon/logo2.png" alt="" class="customer-img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="customer-list__item">
-                                    <img src="temp/images/icon/logo3.png" alt="" class="customer-img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="customer-list__item">
-                                    <img src="temp/images/icon/logo4.png" alt="" class="customer-img">
-                                </div>
-                            </div>  <div class="swiper-slide">
-                                <div class="customer-list__item">
-                                    <img src="temp/images/icon/logo5.png" alt="" class="customer-img">
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="customer-list__item">
-                                    <img src="temp/images/icon/logo4.png" alt="" class="customer-img">
-                                </div>
-                            </div>  <div class="swiper-slide">
-                                <div class="customer-list__item">
-                                    <img src="temp/images/icon/logo5.png" alt="" class="customer-img">
-                                </div>
-                            </div>
+                            @if ($customerChildren->isEmpty())
+                                <p>Không có dữ liệu sứ mệnh.</p>
+                            @else
+                                @foreach($customerChildren as $item)
+                                    <div class="swiper-slide">
+                                        <div class="customer-list__item">
+                                            <img src="{{asset('storage/images/customers/' . $item->thumb)}}" alt="" class="customer-img">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
+
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
@@ -286,8 +193,10 @@
 
             <!--  -->
             <div class="main-content__news container position-relative">
-                <img src="temp/images/Blogs.png" alt="" class="logo-blog position-absolute">
-                <h1 class="title">tin tức</h1>
+                @foreach($cate as $item)
+                    <img src="{{asset('storage/images/sections/' . $item->thumb)}}" alt="" class="logo-blog position-absolute">
+                    <h1 class="title">{{$item->title}}</h1>
+                @endforeach
                 <div class="news d-flex">
                     <div class="news-left">
                             <h3 class="d-flex news-left__title">

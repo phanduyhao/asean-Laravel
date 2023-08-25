@@ -6,42 +6,43 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form method="post" action="{{ route('services.update',['service' => $service]) }}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('customers.update',['customer' => $customer]) }}" enctype="multipart/form-data">
             @method('PATCH')
             @csrf
             <div class="card-footer flex-center-between">
-                <a href="{{route('services.index')}}" name="submit" type="submit" class="btn font-weight-bold btn-warning">Trở lại</a>
+                <a href="{{route('customers.index')}}" name="submit" type="submit" class="btn font-weight-bold btn-warning">Trở lại</a>
                 <button name="submit" type="submit" class="btn btn-success font-weight-bold float-right">Cập nhật</button>
             </div>
             <div class="card-body">
                 @include('admin.error')
                 <div class="form-group">
-                    <label for="">Title</label>
-                    <input value="{{$service->title}}" name="title" type="text" class="form-control" id="title" placeholder="service Title ">
+                    <label for="">Customer Name</label>
+                    <input value="{{$customer->title}}" name="title" type="text" class="form-control" id="title" placeholder="customer Title ">
+                </div>
+                <div class="form-group">
+                    <label for="">Link</label>
+                    <input value="{{$customer->link}}" name="link" type="text" class="form-control" id="title" placeholder="customer Title ">
                 </div>
                 <div id="image-gallery">
                     <input type="file" name="thumb" id="file-input" multiple onchange="previewImages(event)">
                     <div id="image-preview"></div>
                 </div>
                 <div class="form-group">
-                    <label for="">Description</label>
-                    <input value="{{$service->desc}}" name="desc" type="text" placeholder="service Description "  class="form-control" id="desc">
+                    <label for="">Section</label>
+                    <select name="section_id" class="form-control" id="service_id">
+                        <option value="">Chọn section</option>
+                        @foreach($sections as $section)
+                            <option value="{{ $section->id }}">{{ $section->title }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-check">
-                    @if($service->active == 1)
+                    @if($customer->active == 1)
                         <input checked name="active" type="checkbox" class="form-check-input" id="">
                     @else
                         <input name="active" type="checkbox" class="form-check-input" id="">
                     @endif
                     <label class="form-check-label" for="">Active</label>
-                </div>
-                <div class="form-check">
-                    @if($service->special == 1)
-                        <input checked name="special" type="checkbox" class="form-check-input" id="">
-                    @else
-                        <input name="special" type="checkbox" class="form-check-input" id="">
-                    @endif
-                    <label class="form-check-label" for="">Special</label>
                 </div>
             </div>
         </form>

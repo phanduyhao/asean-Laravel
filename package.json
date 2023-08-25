@@ -8,10 +8,10 @@
         "Create Storage image": "php artisan storage:link",
         "makeController": "php artisan make:controller Admin/mainController ",
         "makeController Full Class": "php artisan make:controller Admin/adminOrders --resource",
-        "makeModel-Controller-Migration": "php artisan make:model listServices -mcr",
+        "makeModel-Controller-Migration": "php artisan make:model options -mcr",
         "RunPHPCommand": " php artisan tinker ",
         "CreatePass": "echo bcrypt('12345')",
-        "CreateMigration": "php artisan make:migration update_service",
+        "CreateMigration": "php artisan make:migration update_cate",
         "makeMigration": "php artisan migrate",
         "makeFormRequest": "php artisan make:request Menu/CreateFormRequest",
         "list": "php artisan route:list"

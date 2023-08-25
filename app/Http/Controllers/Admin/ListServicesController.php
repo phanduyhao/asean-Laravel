@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\services;
+use App\Models\sections;
 use Illuminate\Http\Request;
 use App\Models\listServices;
 use Illuminate\Support\Str;
@@ -15,9 +15,9 @@ class listServicesController extends Controller
      */
     public function index()
     {
-        $services = services::all();
+        $sections = sections::all();
         $listServices = listServices::all();
-        return view('admin.listService.index',compact('listServices','services'),[
+        return view('admin.listService.index',compact('listServices','sections'),[
             'title' => 'Quản lý danh sách dịch vụ'
         ]);
     }
@@ -27,9 +27,9 @@ class listServicesController extends Controller
      */
     public function create()
     {
-        $services = services::all();
+        $sections = sections::all();
         $listServices = listServices::all();
-        return view('admin.listService.create',compact('listServices','services'),[
+        return view('admin.listService.create',compact('listServices','sections'),[
             'title' => 'Thêm mới dịch vụ'
         ]);
     }
@@ -39,7 +39,7 @@ class listServicesController extends Controller
      */
     public function store(Request $request)
     {
-        $services = services::all();
+        $sections = sections::all();
         $this->validate($request,[
             'title' => 'required',
             'thumb' => 'required',
@@ -82,9 +82,9 @@ class listServicesController extends Controller
      */
     public function edit(listServices $listService)
     {
-        $services = services::all();
+        $sections = sections::all();
         $listServices = listServices::find($listService);
-        return view('admin.listService.edit',compact('listServices','listService','services'),[
+        return view('admin.listService.edit',compact('listServices','listService','sections'),[
             'title' => 'Chỉnh sửa '
         ]);
     }
@@ -94,7 +94,7 @@ class listServicesController extends Controller
      */
     public function update(Request $request, listServices $listService)
     {
-        $services = services::all();
+        $sections = sections::all();
         $this->validate($request,[
             'title' => 'required',
             'desc' => 'required',

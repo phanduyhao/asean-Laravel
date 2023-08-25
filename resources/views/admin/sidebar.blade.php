@@ -66,6 +66,14 @@
                 </a>
                 <ul class="nav nav-treeview" style="display: block;">
                     <li class="nav-item">
+                        <a href="{{route('sections.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-file"></i>
+                            <p>
+                                Quản lý section
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{route('slides.index')}}" class="nav-link">
                             <i class="nav-icon far fa-image"></i>
                             <p>
@@ -89,14 +97,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{route('services.index')}}" class="nav-link">
-                            <i class="nav-icon fas fa-file"></i>
-                            <p>
-                                Quản lý dịch vụ
-                            </p>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="{{route('listServices.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-chart-pie"></i>
@@ -107,26 +108,34 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{route('testimonials.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-tree"></i>
                             <p>
-                                Quản lý Video
+                                Quản lý cảm nhận khách hàng
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{route('customers.index')}}" class="nav-link">
                             <i class="nav-icon far fa-envelope"></i>
                             <p>
-                                Quản lý phản hồi
+                                Quản lý đối tác
                             </p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{route('cates.index')}}" class="nav-link">
                             <i class="nav-icon fas fa-edit"></i>
                             <p>
-                                Quản lý bình luận
+                                Quản lý danh mục bài viết
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('posts.index')}}" class="nav-link">
+                            <i class="nav-icon fas fa-tree"></i>
+                            <p>
+                                Quản lý bài viết
                             </p>
                         </a>
                     </li>

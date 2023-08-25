@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('list_services', function (Blueprint $table) {
+        Schema::create('customers', function (Blueprint $table) {
             $table->id();
             $table->string('title',255);
             $table->string('thumb',255);
-            $table->longText('desc');
+            $table->string('link',255);
             $table->unsignedBigInteger('section_id');
             $table->foreign('section_id')->references('id')->on('sections');
-            $table->binary('active',255)->nullable();
+            $table->binary('active')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('list_services');
+        Schema::dropIfExists('customers');
     }
 };

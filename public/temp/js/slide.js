@@ -23,6 +23,7 @@ var swiper = new Swiper(".slide-review", {
     pagination: {
         el: ".swiper-pagination",
         clickable: true,
+        loop: true,
     }
 });
 var swiper = new Swiper(".slide-mission", {
