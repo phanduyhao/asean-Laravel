@@ -13,4 +13,5 @@ class missions extends Model
     {
         return $this->hasMany(listMissions::class, 'mission_id');
     }
+
 }

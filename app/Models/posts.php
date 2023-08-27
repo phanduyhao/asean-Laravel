@@ -16,7 +16,11 @@ class posts extends Model
     {
         return date('d.m.Y', strtotime($value)); // Định dạng theo 'Ngày/Tháng/Năm'
     }
-    public function cate()
+//    public function cate()
+//    {
+//        return $this->belongsTo(cates::class, 'cate_id','id');
+//    }
+    public function cates()
     {
         return $this->belongsTo(cates::class, 'cate_id','id');
     }

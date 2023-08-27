@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CustomersController;
 use App\Http\Controllers\Admin\CatesController;
 use App\Http\Controllers\Admin\postsController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ConsultationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,8 @@ use App\Http\Controllers\HomeController;
 Route::get('/',[HomeController::class,'home'])->name('home');
 Route::get('/admin',[mainController::class,'home'])->name('admin');
 Route::prefix('admin')->group(function () {
+    Route::resource('options', OptionsController::class);
+    Route::get('/getSubData/{sectionId}', 'OptionsController@getSubData');
     Route::resource('slides', SlidesController::class);
     Route::resource('missions', missionsController::class);
     Route::resource('listMissions', ListMissionsController::class);
@@ -37,3 +40,4 @@ Route::prefix('admin')->group(function () {
     Route::resource('cates', CatesController::class);
     Route::resource('posts', postsController::class);
 });
+Route::post('/register/consultation', [ConsultationController::class,'register'])->name('register.consultation');

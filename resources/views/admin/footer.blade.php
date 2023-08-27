@@ -36,3 +36,89 @@
 <script src="/temp/admin/dist/js/pages/dashboard.js"></script>
 <script type="text/javascript" src="/temp/build/js/main.min.js"></script>
 <script type="text/javascript" src="/temp/build/js/admin.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('body').on('click', '.form-submit-ajax', function(e){
+            e.preventDefault();
+            let formID = $(this).closest('form').attr('id');
+            let href = $(this).data('href');
+            let getUrl = $(this).data('url');
+            let update = $(this).data('update');
+            if(validateForm(`#${formID}`)) {
+                var formData = new FormData($(`#${formID}`)[0]);
+                console.log(formData);
+                formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                debugger;
+                $.ajax({
+                    type: 'POST',
+                    url: href,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        $(update).load(getUrl);
+                    },
+                });
+
+            } else {
+                $('html, body').animate({
+                    scrollTop: $(".helper").offset().top - 200
+                }, 500)
+            }
+        });
+
+        $('body').on('click', '.contact-form-submit', function(e){
+            e.preventDefault();
+            let formID = $(this).closest('form').attr('id');
+            let href = $(this).data('href');
+            let loading = $(this).data('loading');
+            let getThis = $(this);
+            if(validateForm(`#${formID}`)) {
+                $(loading).css({
+                    'display':  'inline-block',
+                    'cursor': 'wait'
+                });
+                $(this).css('display', 'none');
+                var formData = new FormData($(`#${formID}`)[0]);
+                console.log(formData);
+                formData.append('_token', $('meta[name="csrf-token"]').attr('content'));
+                debugger;
+                $.ajax({
+                    type: 'POST',
+                    url: href,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        console.log(getThis);
+                        $(getThis).css('display',  'inline-block');
+                        $(loading).css('display', 'none');
+                        alert(response.message);
+                    },
+                });
+
+            } else {
+                $('html, body').animate({
+                    scrollTop: $(".helper").offset().top - 200
+                }, 500)
+            }
+        });
+    });
+
+    function validateForm(formID) {
+        let checkValid = true
+        $(formID).find('.input-field').each(function(){
+            let value = $(this).val()
+            console.log(this)
+            if(value == null || value == '' || value == undefined) {
+                checkValid = false
+                $(this).parent().find('.helper').remove()
+                $(this).css({'border-color': "red"})
+                let htmlAlert = `<span class="helper" style="color:#4b845e; position: absolute; top: -22px; left: 0">${$(this).data('require')}</span>`
+                $(this).parent().append(htmlAlert)
+            }
+        })
+        return checkValid
+    }
+
+</script>

@@ -11,9 +11,10 @@
                             Liên hệ với chúng tôi để được tư vấn các giải pháp phù hợp
                         </p>
                     </div>
-                    <form action="" class="right w-100">
+                    <form id="fomrRegister" method="post" data-action="{{ route('register.consultation') }}" class="right w-100">
+                        @csrf
                         <div class="form-input position-relative">
-                            <input type="email" placeholder="Nhập email" class="w-100 h-100">
+                            <input type="email" name="email" placeholder="Nhập email" class="input-field w-100 h-100" data-require="Vui lòng nhập Email!">
                             <button type="submit" class="form-input__submit position-absolute">GỬI YÊU CẦU
                                 <i class="fa-solid fa-arrow-right-long"></i>
                             </button>

@@ -59,7 +59,7 @@
                             <button class="mission-btn">Xem thêm</button>
                         </div>
                         <div class="right flex-center">
-                            @foreach(json_decode($item->image) as $image)
+                            @foreach ($imagesToDisplay as $image)
                                 <img class="img-fluid" width="247" height="247" src="{{ asset('storage/images/mission/' . $image) }}" alt="">
                             @endforeach
                         </div>
@@ -197,95 +197,119 @@
                     <img src="{{asset('storage/images/sections/' . $item->thumb)}}" alt="" class="logo-blog position-absolute">
                     <h1 class="title">{{$item->title}}</h1>
                 @endforeach
+
                 <div class="news d-flex">
-                    <div class="news-left">
-                            <h3 class="d-flex news-left__title">
-                                <p></p>
-                                Tin nội bộ
-                            </h3>
-                        <div class="top">
-                            <a href="">
-                                <img src="temp/images/new1.jpg" alt="" class="news-left__img">
-                            </a>
-                            <h2 class="news-left__subtitle">
-                                <a href="">Danh mục thiết bị bắt buộc phải kiểm định an toàn</a>
-                            </h2>
-                            <p class="news-left__date">02.03.2021</p>
-                        </div>
-                        <ul class="bottom">
-                            <li class="news-left__list">
-                                <a href="">
-                                    Danh mục thiết bị bắt buộc phải kiểm định an toàn
-                                </a>
-                            </li>
-                            <li class="news-left__list">
-                                <a href="">
-                                    Danh mục thiết bị bắt buộc phải kiểm định an toàn
-                                </a>
-                            </li>
-                            <li class="news-left__list">
-                                <a href="">
-                                    Danh mục thiết bị bắt buộc phải kiểm định an toàn
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="news-right">
-                        <h3 class="d-flex news-right__title">
-                            <p></p>
-                            Tin ngành
-                        </h3>
-                        <div class="list">
-                            <div class="news-right__item d-flex">
-                                <a href="">
-                                    <img src="temp/images/newright1.jpg" alt="">
-                                </a>
-                               <div class="content">
-                                   <a href="" class="title">
-                                       Danh mục thiết bị bắt buộc phải kiểm định an toàn
-                                   </a>
-                                   <p class="date">
-                                       02.03.2021
-                                   </p>
-                                   <p class="desc">
-                                       Theo quy định của Nhà nước đối với các thiết bị máy móc có nguy cơ gây mất an toàn lao động khi vận hành và ảnh hưởng …
-                                   </p>
-                               </div>
+
+
+
+
+
+
+
+{{--                    @foreach ($cates as $cate)--}}
+{{--                        @if($cate->alias == 'tin-noi-bo')--}}
+
+{{--                            <div class="news-left">--}}
+{{--                                <h3 class="d-flex news-left__title">--}}
+{{--                                    <p></p>--}}
+{{--                                    {{ $cate->title }}--}}
+{{--                                </h3>--}}
+{{--                                @foreach ($tinNoiBoPosts as $post)--}}
+{{--                                    <div class="top">--}}
+{{--                                        <a href="">--}}
+{{--                                            <img src="{{ $post->thumb }}" alt="" class="news-left__img">--}}
+{{--                                        </a>--}}
+{{--                                        <h2 class="news-left__subtitle">--}}
+{{--                                            <a href="">{{ $post->title }}</a>--}}
+{{--                                        </h2>--}}
+{{--                                        <p class="news-left__date">{{ $post->created_at->format('d.m.Y') }}</p>--}}
+{{--                                    </div>--}}
+{{--                                @endforeach--}}
+{{--                                <ul class="bottom">--}}
+{{--                                    @foreach ($tinNoiBoPosts as $post)--}}
+{{--                                        <li class="news-left__list">--}}
+{{--                                            <a href="">{{ $post->title }}</a>--}}
+{{--                                        </li>--}}
+{{--                                    @endforeach--}}
+{{--                                </ul>--}}
+{{--                            </div>--}}
+{{--                    @endforeach--}}
+
+
+
+
+
+
+
+
+
+
+                    @foreach ($catePost as $cate)
+                        @if($cate->alias == 'tin-noi-bo')
+                            <div class="news-left">
+                                <h3 class="d-flex news-left__title">
+                                    <p></p>
+                                    {{$cate->title}}
+                                </h3>
+                                @foreach ($tinNoiBoPosts as $post)
+                                    <div class="top">
+                                        <a href="">
+                                            <img src="{{asset('storage/images/posts/' . $post->thumb)}}" alt="" class="news-left__img">
+                                        </a>
+                                        <h2 class="news-left__subtitle">
+                                            <a href="">{{$post->title}}</a>
+                                        </h2>
+                                        <p class="news-left__date">{{$post->created_at}}</p>
+                                    </div>
+                                @endforeach
+                                <ul class="bottom">
+                                    <li class="news-left__list">
+                                        <a href="">
+                                            Danh mục thiết bị bắt buộc phải kiểm định an toàn
+                                        </a>
+                                    </li>
+                                    <li class="news-left__list">
+                                        <a href="">
+                                            Danh mục thiết bị bắt buộc phải kiểm định an toàn
+                                        </a>
+                                    </li>
+                                    <li class="news-left__list">
+                                        <a href="">
+                                            Danh mục thiết bị bắt buộc phải kiểm định an toàn
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="news-right__item d-flex">
-                                <a href="">
-                                    <img src="temp/images/newright2.jpg" alt="">
-                                </a>
-                                <div class="content">
-                                    <a href="" class="title">
-                                        Danh mục thiết bị bắt buộc phải kiểm định an toàn
-                                    </a>
-                                    <p class="date">
-                                        02.03.2021
-                                    </p>
-                                    <p class="desc">
-                                        Theo quy định của Nhà nước đối với các thiết bị máy móc có nguy cơ gây mất an toàn lao động khi vận hành và ảnh hưởng …
-                                    </p>
+                        @endif
+                        @if($cate->alias == 'tin-nganh')
+                            <div class="news-right">
+                                <h3 class="d-flex news-right__title">
+                                    <p></p>
+                                    {{$cate->title}}
+                                </h3>
+                                <div class="list">
+                                    @foreach ($tinNganhPosts as $post)
+                                        <div class="news-right__item d-flex">
+                                            <a href="">
+                                                <img src="{{asset('storage/images/posts/'.$post->thumb)}}" alt="">
+                                            </a>
+                                            <div class="content">
+                                                <a href="" class="title">
+                                                    {{$post->title}}
+                                                </a>
+                                                <p class="date">
+                                                    {{$post->created_at}}
+                                                </p>
+                                                <p class="desc">
+                                                    {{$post->description}}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
-                            <div class="news-right__item d-flex">
-                                <a href="">
-                                    <img src="temp/images/newright3.jpg" alt="">
-                                </a>
-                                <div class="content">
-                                    <a href="" class="title">
-                                        Danh mục thiết bị bắt buộc phải kiểm định an toàn
-                                    </a>
-                                    <p class="date">
-                                        02.03.2021
-                                    </p>
-                                    <p class="desc">
-                                        Theo quy định của Nhà nước đối với các thiết bị máy móc có nguy cơ gây mất an toàn lao động khi vận hành và ảnh hưởng …
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>

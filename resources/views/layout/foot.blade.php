@@ -25,19 +25,13 @@
                         // Xóa Các Dữ liệu cũ trong các ô Input
                         $(`#${formID} input[type=text], #${formID} input[type=email], #${formID} textarea`).val('');
                         // Gọi hàm hiển thị Comment ra HTML
-                        var dataId = $('#'+formID+' .boxCommentFormReplyID ').attr('id');
-                        if (formID === 'boxCommentForm') {
-                            appendNewComment(response, 'comment-list');
-                        } else if (formID === 'boxCommentFormReply_'+dataId) {
-                            appendNewComment(response, 'comment-list__child-'+dataId);
-                        }
                     },
                     error: function() {
                         console.log("An error occurred.");
                     }
                 });
             } else {
-                alert('Các trường có dấu * là bắt buộc');
+                alert('Không được để trống dữ liệu!');
             }
         });
 
@@ -90,33 +84,5 @@
             let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return emailPattern.test(email);
         }
-
-        //    HIỂN THỊ COMMENT
-        function appendNewComment(commentData, targetList) {
-            var newComment = $('<div class="comment-user">' +
-                '<p class="id_user d-none" >commentData.id</p>'+
-                '<div class="d-flex" style="align-items: flex-start;">'+
-                '<img src="temp/images/Accountcircle.png" class="comment-user__img" alt="">'+
-                '<div class="comment-user__infor">'+
-                '<p class="name">' + commentData.user_name + '</p>'+
-                '<p class="type">' + commentData.comment_content + '</p>'+
-                '</div>'+
-                '</div>'+
-                '<div class="reply">'+
-                '</div>');
-            // Thêm bình luận vào thể có class " comment-list "
-            $(`.${targetList}`).prepend(newComment);
-        }
-
-        // Chức năng Bấm vào " Trả lời " thì hiển form bình luận
-        $('.reply-text__link').on('click', function(event) {
-            event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết
-            // Ẩn tất cả các form trả lời hiện có
-            $('.comment-box.child').addClass('d-none');
-
-            // Hiển thị form trả lời tương ứng với liên kết được click
-            var commentBox = $(this).closest('.comment-user').find('.comment-box.child');
-            commentBox.removeClass('d-none');
-        });
     });
 </script>

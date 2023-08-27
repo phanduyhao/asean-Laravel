@@ -75,3 +75,49 @@ document.addEventListener('DOMContentLoaded', function() {
             .replace(/^-+|-+$/g, '');
     }
 });
+
+
+// Settings Post
+// $(document).ready(function () {
+//     $('#category_id').on('change', function() {
+//         var categoryId = $(this).val();
+//         $.ajax({
+//             type: 'GET',
+//             url: '{{ route("admin.getPostsByCategory") }}',
+//             data: { category_id: categoryId },
+//             success: function(response) {
+//                 var postIdsSelect = $('#post_ids');
+//                 postIdsSelect.empty();
+//
+//                 if (response.posts.length > 0) {
+//                     $.each(response.posts, function(index, post) {
+//                         postIdsSelect.append('<option value="' + post.id + '">' + post.title + '</option>');
+//                     });
+//                 } else {
+//                     postIdsSelect.append('<option value="">Không có bài viết trong danh mục này</option>');
+//                 }
+//             },
+//         });
+//     });
+// });
+$(document).ready(function() {
+    $('#cate-select').change(function() {
+        var CateId = $(this).val();
+        if (CateId) {
+            $.ajax({
+                url: '/get-posts/' + CateId,
+                type: 'GET',
+                success: function(response) {
+                    var posts = response.posts;
+                    var options = '';
+                    $.each(posts, function(key, post) {
+                        options += '<option value="' + post.id + '">' + post.title + '</option>';
+                    });
+                    $('#post-select').html('<option value="">--Select City--</option>' + options);
+                }
+            });
+        } else {
+            $('#post-select').html('<option value="">--Select City--</option>');
+        }
+    });
+});

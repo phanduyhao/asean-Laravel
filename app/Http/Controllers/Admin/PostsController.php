@@ -128,7 +128,6 @@ class postsController extends Controller
             $post->thumb = $fileName; // Lưu tên file ảnh theo slug Title
         }
         $post->cate_id = $request->cate_id;
-        $post->location = $request->location;
         $post->description = $request->desc;
         $post->contents = $request->contents;
         $post->active = $request->active ? 1 : 0;
